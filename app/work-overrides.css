@@ -1,0 +1,68 @@
+.client-value {
+  margin-top: 16px !important;
+  padding: 14px 0 0;
+  border-top: 1px solid rgba(255,255,255,.07);
+  color: #b5c0b7 !important;
+  font-size: 13px !important;
+  line-height: 1.65 !important;
+}
+
+.client-value strong {
+  color: var(--acid);
+  font-weight: 650;
+}
+
+.work-group {
+  margin-top: 88px;
+}
+
+.work-group:first-of-type {
+  margin-top: 70px;
+}
+
+.labs-group {
+  padding-top: 90px;
+  margin-top: 100px;
+  border-top: 1px solid var(--line);
+}
+
+.work-heading {
+  align-items: start;
+}
+
+.work-heading h2 {
+  margin-top: 8px;
+  max-width: 720px;
+}
+
+.work-heading-copy {
+  max-width: 420px;
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.home-labs-heading {
+  margin-top: 86px;
+}
+
+.project-card .client-value + .metric {
+  margin-top: 24px;
+}
+
+@media (max-width: 760px) {
+  .work-heading {
+    display: block;
+  }
+
+  .work-heading-copy {
+    margin-top: 20px;
+  }
+
+  .work-group,
+  .labs-group,
+  .home-labs-heading {
+    margin-top: 64px;
+  }
+}
