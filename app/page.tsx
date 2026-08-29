@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { SignalPanel } from "../components/SignalPanel";
 import { ProjectCard } from "../components/ProjectCard";
-import { experience, notes, projects, services, site } from "../data/site";
+import { caseStudies, experience, labs, notes, services, site } from "../data/site";
 
 export default function Home() {
   return (
@@ -49,11 +49,19 @@ export default function Home() {
 
       <section className="section shell" id="work">
         <div className="section-heading row-heading">
-          <div><span className="section-index">/ 02</span><p className="eyebrow">Selected work</p><h2>Built around measurable outcomes.</h2></div>
-          <Link className="text-link" href="/work">All projects ↗</Link>
+          <div><span className="section-index">/ 02</span><p className="eyebrow">Featured case studies</p><h2>Built around business problems and measurable outcomes.</h2></div>
+          <Link className="text-link" href="/work">All work ↗</Link>
         </div>
         <div className="project-grid">
-          {projects.slice(0, 4).map((project, index) => <ProjectCard key={project.slug} project={project} featured={index === 0} />)}
+          {caseStudies.slice(0, 3).map((project, index) => <ProjectCard key={project.slug} project={project} featured={index === 0} />)}
+        </div>
+
+        <div className="section-heading row-heading home-labs-heading">
+          <div><p className="eyebrow">Bitoom Labs</p><h2>Open prototypes exploring what we can build next.</h2></div>
+          <Link className="text-link" href="/work">Explore labs ↗</Link>
+        </div>
+        <div className="project-grid">
+          {labs.slice(0, 3).map((project, index) => <ProjectCard key={project.slug} project={project} featured={index === 0} />)}
         </div>
       </section>
 
