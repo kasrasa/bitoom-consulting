@@ -1,45 +1,48 @@
-"use client";
-
-import { useEffect, useState } from "react";
-
-const lines = [
-  "computer vision",
-  "machine vision",
-  "multimodal AI",
-  "production ML",
-  "applied R&D",
-];
+const stages = [
+  {
+    number: "01",
+    title: "Frame the decision",
+    text: "Define the operational constraint, success metric and failure cost before choosing a model.",
+  },
+  {
+    number: "02",
+    title: "Prove the approach",
+    text: "Benchmark the smallest credible solution on real data and expose its failure modes early.",
+  },
+  {
+    number: "03",
+    title: "Build for production",
+    text: "Engineer deployment, observability and feedback loops so performance survives outside the notebook.",
+  },
+] as const;
 
 export function SignalPanel() {
-  const [active, setActive] = useState(0);
-  useEffect(() => {
-    const timer = window.setInterval(() => setActive((v) => (v + 1) % lines.length), 1800);
-    return () => window.clearInterval(timer);
-  }, []);
-
   return (
-    <div className="signal-panel" aria-label="Animated engineering system panel">
-      <div className="signal-topbar">
-        <span><i className="status-dot" />SYSTEM / ONLINE</span>
-        <span>BITOOM.01</span>
+    <aside className="delivery-panel" aria-labelledby="delivery-title">
+      <div className="delivery-panel-top">
+        <div>
+          <p className="eyebrow">How Bitoom works</p>
+          <h2 id="delivery-title">From difficult question to dependable system.</h2>
+        </div>
+        <span className="delivery-badge">R&amp;D → PROD</span>
       </div>
-      <div className="radar">
-        <div className="radar-ring r1" />
-        <div className="radar-ring r2" />
-        <div className="radar-ring r3" />
-        <div className="radar-axis x" />
-        <div className="radar-axis y" />
-        <div className="scan-line" />
-        <span className="target t1" />
-        <span className="target t2" />
-        <span className="target t3" />
-        <div className="radar-core">AI</div>
+
+      <ol className="delivery-steps">
+        {stages.map((stage) => (
+          <li className="delivery-step" key={stage.number}>
+            <span className="delivery-step-index">{stage.number}</span>
+            <div>
+              <h3>{stage.title}</h3>
+              <p>{stage.text}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+
+      <div className="delivery-outcome">
+        <span>What you get</span>
+        <strong>Evidence, maintainable software and a clear path forward.</strong>
       </div>
-      <div className="terminal-lines">
-        <div><span className="muted">01</span> sensing / <b>{lines[active]}</b></div>
-        <div><span className="muted">02</span> benchmark → validate → deploy</div>
-        <div><span className="muted">03</span> <span className="terminal-cursor">ready for difficult problems_</span></div>
-      </div>
-    </div>
+    </aside>
   );
 }

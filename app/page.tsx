@@ -3,36 +3,60 @@ import { SignalPanel } from "../components/SignalPanel";
 import { ProjectCard } from "../components/ProjectCard";
 import { caseStudies, experience, labs, notes, services, site } from "../data/site";
 
+const capabilities = [
+  "COMPUTER VISION",
+  "MACHINE VISION",
+  "PYTORCH",
+  "MULTIMODAL AI",
+  "MLOPS",
+  "3D VISION",
+  "EDGE AI",
+  "DISTRIBUTED TRAINING",
+] as const;
+
 export default function Home() {
   return (
     <>
       <section className="hero shell">
         <div className="hero-copy">
           <div className="availability"><span /> Available for select consulting projects</div>
-          <p className="kicker">AI / ML ENGINEERING · COMPUTER VISION · MACHINE VISION</p>
-          <h1>We build AI systems that <em>see</em> the real world.</h1>
-          <p className="hero-lead">Bitoom helps teams move from a difficult visual AI problem to a system they can measure, deploy and trust — from the first experiment to production.</p>
+          <p className="kicker">APPLIED AI · COMPUTER VISION · PRODUCTION ML</p>
+          <h1>Research mindset.<br /><em>Production habits.</em></h1>
+          <p className="hero-lead">
+            <strong>Founder-led AI engineering for complex visual problems.</strong>
+            Bitoom combines disciplined experimentation with production engineering to turn ambiguous ideas, underperforming models and vision-system bottlenecks into measurable, deployable systems.
+          </p>
           <div className="hero-actions">
-            <a className="button primary" href="#work">Explore our work <span>↘</span></a>
-            <a className="button ghost" href="#contact">Discuss a problem <span>↗</span></a>
+            <a className="button primary" href="#work">View case studies <span>↘</span></a>
+            <a className="button ghost" href="#contact">Discuss a project <span>↗</span></a>
           </div>
           <div className="hero-proof">
-            <div><strong>5+ yrs</strong><span>vision engineering</span></div>
-            <div><strong>6+</strong><span>industrial CV projects</span></div>
-            <div><strong>R&D → Prod</strong><span>end-to-end thinking</span></div>
+            <div><strong>5+ years</strong><span>applied vision engineering</span></div>
+            <div><strong>6+ projects</strong><span>industrial CV delivery</span></div>
+            <div><strong>R&D → Prod</strong><span>one accountable path</span></div>
           </div>
         </div>
         <SignalPanel />
       </section>
 
       <section className="ticker" aria-label="Capabilities">
-        <div>COMPUTER VISION <i>◆</i> MACHINE VISION <i>◆</i> PYTORCH <i>◆</i> MULTIMODAL AI <i>◆</i> MLOPS <i>◆</i> 3D VISION <i>◆</i> EDGE AI <i>◆</i> DISTRIBUTED TRAINING <i>◆</i></div>
+        <div className="ticker-track">
+          {[0, 1].map((group) => (
+            <div className="ticker-group" aria-hidden={group === 1} key={group}>
+              {capabilities.map((capability) => (
+                <span className="ticker-item" key={`${group}-${capability}`}>
+                  {capability}<i aria-hidden="true">◆</i>
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
       </section>
 
       <section className="section shell" id="services">
         <div className="section-heading split-heading">
           <div><span className="section-index">/ 01</span><p className="eyebrow">What we do</p></div>
-          <h2>Technical depth without the research-project drag.</h2>
+          <h2>Technical depth, focused on the shortest credible path.</h2>
           <p>Bring a vague idea, an underperforming model or a production bottleneck. We help find the shortest credible path forward.</p>
         </div>
         <div className="service-grid">
@@ -68,7 +92,7 @@ export default function Home() {
       <section className="section shell" id="experience">
         <div className="section-heading split-heading compact">
           <div><span className="section-index">/ 03</span><p className="eyebrow">Experience</p></div>
-          <h2>Research mindset. Production habits.</h2>
+          <h2>Engineering depth across the full vision stack.</h2>
           <p>Experience across industrial automation, high-throughput vision systems, applied ML research and 3D computer vision.</p>
         </div>
         <div className="timeline">
